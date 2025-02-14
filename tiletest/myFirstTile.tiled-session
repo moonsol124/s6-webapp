@@ -1,0 +1,61 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "tile.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "C:/Users/Moons/OneDrive - Office 365 Fontys/s6/Grass1.tsx": {
+            "scaleInDock": 1
+        },
+        "Grass.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilled_Dirt.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tile..tmj": {
+            "scale": 0.8134374999999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.0614675374568,
+                "y": 320.2458701498271
+            }
+        },
+        "tile.tmx": {
+            "scale": 0.9262499999999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 241.29554655870453,
+                "y": 428.6099865047234
+            }
+        },
+        "tile1.tmx": {
+            "scale": 0.8134374999999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.0614675374568,
+                "y": 320.2458701498271
+            }
+        }
+    },
+    "map.height": 32,
+    "map.width": 32,
+    "openFiles": [
+        "tile.tmx",
+        "Tilled_Dirt.tsx"
+    ],
+    "project": "myFirstTile.tiled-project",
+    "recentFiles": [
+        "tile..tmj",
+        "tile.tmx",
+        "tile1.tmx",
+        "Tilled_Dirt.tsx",
+        "Grass.tsx"
+    ]
+}
