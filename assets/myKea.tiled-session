@@ -1,0 +1,266 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Beginning_Fields.tmj",
+    "expandedProjectPaths": [
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)",
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps",
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled",
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps/Rules",
+        ".",
+        "The Fan-tasy Tileset (Free) 1.5.1"
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        ":/automap-tiles.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj": {
+            "expandedObjectLayers": [
+                10
+            ],
+            "scale": 1,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 421,
+                "y": 359.5
+            }
+        },
+        "Beginning_Fields.tmj#Animation_Flowers_Red": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Animation_Flowers_White": {
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Atlas_Buildings": {
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Atlas_Props": {
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Atlas_Rocks": {
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Atlas_Trees_Bushes": {
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#AutoMap Rules": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Buildings": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Campfire": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Objects_Props": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Objects_Rocks": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Objects_Trees": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Road": {
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Tileset_Ground": {
+            "scaleInDock": 1
+        },
+        "Beginning_Fields.tmj#Tileset_RockSlope": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Beginning_Fields.tmj#Tileset_RockSlope_Simple": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Beginning_Fields.tmj#Tileset_Water": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps/Beginning Fields.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 247.3333333333333,
+                "y": 234.99999999999997
+            }
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps/Rules/RockSlopes_Rules.tmx": {
+            "scale": 0.6094879518072289,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 639.8813936249072,
+                "y": 663.6718556955769
+            }
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Animation_Campfire.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Animation_Flowers_Red.tsx": {
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Animation_Flowers_White.tsx": {
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Atlas_Buildings.tsx": {
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Atlas_Props.tsx": {
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Atlas_Rocks.tsx": {
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Atlas_Trees_Bushes.tsx": {
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Objects_Buildings.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Objects_Props.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Objects_Rocks.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Objects_Trees.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Tileset_Ground.tsx": {
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Tileset_RockSlope.tsx": {
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Tileset_RockSlope_Simple.tsx": {
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Tileset_Water.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilesets/Tilesets_Road.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "myMap.tmj": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 286,
+                "y": 380.5
+            }
+        },
+        "myMap.tmj#Animation_Flowers_Red": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Animation_Flowers_White": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Atlas_Buildings": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Atlas_Props": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Atlas_Rocks": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Atlas_Trees_Bushes": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#AutoMap Rules": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Buildings": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Campfire": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Objects_Props": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Objects_Rocks": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Objects_Trees": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Road": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Tileset_Ground": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Tileset_RockSlope": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Tileset_RockSlope_Simple": {
+            "scaleInDock": 1
+        },
+        "myMap.tmj#Tileset_Water": {
+            "scaleInDock": 1
+        },
+        "tileMap.tmj": {
+            "scale": 0.33,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 1022.7272727272727,
+                "y": 1022.7272727272729
+            }
+        },
+        "tileMap.tmj#Interiors_free_32x32": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "tileMap.tmj#Room_Builder_free_32x32": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/Moons/OneDrive - Office 365 Fontys/s6/myGame/template-react/public/assets",
+    "last.imagePath": "C:/Users/Moons/OneDrive - Office 365 Fontys/s6/myGame/template-react/public/assets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32",
+    "map.height": 64,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "json",
+    "map.width": 64,
+    "openFiles": [
+        "tileMap.tmj",
+        "myMap.tmj",
+        "Beginning_Fields.tmj"
+    ],
+    "project": "myKea.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "tileMap.tmj",
+        "myMap.tmj",
+        "Beginning_Fields.tmj",
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps/Rules/RockSlopes_Rules.tmx",
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps/Beginning Fields.tmx"
+    ],
+    "tileset.embedInMap": true
+}
