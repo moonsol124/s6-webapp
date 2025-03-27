@@ -1,5 +1,6 @@
 {
     "name": "template-react",
+    "homepage": "https://moonsol124/s6-webapp",
     "description": "A Phaser 3 project template that demonstrates React communication and uses Vite for bundling.",
     "version": "1.1.1",
     "type": "module",
@@ -13,7 +14,6 @@
     "bugs": {
         "url": "https://github.com/phaserjs/template-react/issues"
     },
-    "homepage": "https://github.com/phaserjs/template-react#readme",
     "keywords": [
         "phaser",
         "phaser3",
@@ -24,7 +24,9 @@
         "dev": "node log.js dev & vite --config vite/config.dev.mjs",
         "build": "node log.js build & vite build --config vite/config.prod.mjs",
         "dev-nolog": "vite --config vite/config.dev.mjs",
-        "build-nolog": "vite build --config vite/config.prod.mjs"
+        "build-nolog": "vite build --config vite/config.prod.mjs",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "dependencies": {
         "phaser": "^3.88.2",
@@ -39,6 +41,7 @@
         "eslint-plugin-react": "^7.34.2",
         "eslint-plugin-react-hooks": "^4.6.2",
         "eslint-plugin-react-refresh": "^0.4.7",
+        "gh-pages": "^6.3.0",
         "terser": "^5.28.1",
         "vite": "^5.3.1"
     }
