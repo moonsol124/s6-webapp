@@ -13,13 +13,24 @@ const config = {
     height: window.innerHeight, // Full height
     parent: 'game-container',
     // backgroundColor: '#00000',
+    scale: {
+        mode: Phaser.Scale.FIT, // FIT scales the game while maintaining aspect ratio
+        autoCenter: Phaser.Scale.CENTER_BOTH // Ensures it's centered
+    },
     scene: [
         Boot,
         Preloader,
         MainMenu,
         Game,
         GameOver
-    ]
+    ],
+    physics: {
+        default: 'arcade',  // Ensures Arcade Physics is used by default
+        arcade: {
+            gravity: { y: 0 },  // You can adjust gravity, if needed
+            debug: false         // Set to true if you want to see physics boundaries in the game
+        }
+    }
 };
 
 const StartGame = (parent) => {
