@@ -1,0 +1,34 @@
+[
+    {
+      "id": "house1",
+      "name": "Sample House",
+      "description": "This is a beautiful house with lots of charm and a great location. It is spacious and has a lovely garden.",
+      "address": "12 Rue de la Paix, 75002 Paris, France",
+      "contact": "Téléphone : +33 1 42 68 53 00",
+      "url": "https://img-v2.gtsstatic.net/reno/imagereader.aspx?imageurl=https%3A%2F%2Fm.sothebysrealty.com%2F1103i215%2F289a5x2g8fp24j6v9x8b899pc0i215&option=N&h=472&permitphotoenlargement=false"
+    },
+    {
+      "id": "house2",
+      "name": "Modern Villa",
+      "description": "A sleek, modern villa with floor-to-ceiling windows and a scenic view.",
+      "address": "89 Avenue Victor Hugo, 75116 Paris, France",
+      "contact": "Téléphone : +33 1 45 00 12 34",
+      "url": "https://res.cloudinary.com/brickandbatten/images/w_2560,h_1566,c_scale/f_auto,q_auto/v1713267421/wordpress_assets/313364-Alabaster-Caviar-TeakStain-A-copy/313364-Alabaster-Caviar-TeakStain-A-copy.jpg?_i=AA"
+    },
+    {
+      "id": "house3",
+      "name": "Cozy Cottage",
+      "description": "Charming little cottage tucked away in the woods. Perfect for a quiet retreat.",
+      "address": "17 Chemin du Lac, 69006 Lyon, France",
+      "contact": "Téléphone : +33 4 78 12 45 67",
+      "url": "https://cdn.sanity.io/images/5azy6oei/production/5a088a83f0dda1f15ec8fb0d51a14bafcdda54c9-5464x3640.jpg?w=700&fm=jpg&q=80"
+    },
+    {
+      "id": "house4",
+      "name": "Cozy Cottage",
+      "description": "Charming little cottage tucked away in the woods. Perfect for a quiet retreat.",
+      "address": "3 Rue des Lilas, 13001 Marseille, France",
+      "contact": "Téléphone : +33 4 91 00 98 76",
+      "url": "https://img.jamesedition.com/listing_images/2024/11/13/13/59/59/dc740cec-4998-499d-935a-ffb69f7c8b6d/je/760x470xc.jpg"
+    }
+  ]

@@ -11,7 +11,7 @@ export class MainMenu extends Scene
     init() {
         const { width, height } = this.scale;
 
-        this.playerSpeed = 160;
+        this.playerSpeed = 500;
         this.player = null;
         this.cursors = null;
         this.map = null;
@@ -187,7 +187,7 @@ export class MainMenu extends Scene
         const objectLayer = map.getObjectLayer('Object Layer 1');
 
         const startPoint = objectLayer.objects.find(obj => obj.name === 'start');
-        this.player = this.add.sprite(offsetX+startPoint.x, offsetY+startPoint.y, 'sprite').setScale(0.5);
+        this.player = this.add.sprite(offsetX+startPoint.x, offsetY+startPoint.y, 'sprite').setScale(1);
         this.player.setDepth(3);
         this.physics.world.enable(this.player);
         roadSlopeAutoLayer.setCollisionByProperty({ collides: true });
@@ -271,24 +271,24 @@ export class MainMenu extends Scene
         let moving = false;
 
         if (this.cursors.left.isDown) {
-            this.player.body.setVelocityX(-160);
+            this.player.body.setVelocityX((-1)*this.playerSpeed);
             this.player.anims.play('move-left', true);
             this.lastDirection = 'left';
             moving = true;
         } else if (this.cursors.right.isDown) {
-            this.player.body.setVelocityX(160);
+            this.player.body.setVelocityX(this.playerSpeed);
             this.player.anims.play('move-right', true);
             this.lastDirection = 'right';
             moving = true;
         }
 
         if (this.cursors.up.isDown) {
-            this.player.body.setVelocityY(-160);
+            this.player.body.setVelocityY((-1)*this.playerSpeed);
             this.player.anims.play('move-up', true);
             this.lastDirection = 'up';
             moving = true;
         } else if (this.cursors.down.isDown) {
-            this.player.body.setVelocityY(160);
+            this.player.body.setVelocityY(this.playerSpeed);
             this.player.anims.play('move-down', true);
             this.lastDirection = 'down';
             moving = true;
@@ -298,7 +298,7 @@ export class MainMenu extends Scene
             this.player.anims.play(`idle-${this.lastDirection}`);
         }
 
-        this.player.body.velocity.normalize().scale(160);
+        this.player.body.velocity.normalize().scale(this.playerSpeed);
     }
     // changeScene ()
     // {
