@@ -9,14 +9,16 @@ import { Preloader } from './scenes/Preloader';
 // https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
 const config = {
     type: Phaser.AUTO,
-    width: window.innerWidth,   // Full width
-    height: window.innerHeight, // Full height
+    width: 1024,
+    height: 768,
+    // width: window.innerWidth,   // Full width
+    // height: window.innerHeight, // Full height
     parent: 'game-container',
     // backgroundColor: '#00000',
-    scale: {
-        mode: Phaser.Scale.FIT, // FIT scales the game while maintaining aspect ratio
-        autoCenter: Phaser.Scale.CENTER_BOTH // Ensures it's centered
-    },
+    // scale: {
+    //     mode: Phaser.Scale.FIT, // FIT scales the game while maintaining aspect ratio
+    //     autoCenter: Phaser.Scale.CENTER_BOTH // Ensures it's centered
+    // },
     scene: [
         Boot,
         Preloader,
@@ -34,9 +36,7 @@ const config = {
 };
 
 const StartGame = (parent) => {
-
     return new Phaser.Game({ ...config, parent });
-
 }
 
 export default StartGame;

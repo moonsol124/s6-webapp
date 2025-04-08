@@ -6,11 +6,11 @@
     "activeFile": "Beginning_Fields.tmj",
     "expandedProjectPaths": [
         "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)",
-        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps",
-        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled",
         "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps/Rules",
+        "The Fan-tasy Tileset (Free) 1.5.1",
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled",
         ".",
-        "The Fan-tasy Tileset (Free) 1.5.1"
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps"
     ],
     "fileStates": {
         "": {
@@ -26,9 +26,9 @@
                 10
             ],
             "scale": 1,
-            "selectedLayer": 6,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 421,
+                "x": 313,
                 "y": 359.5
             }
         },
@@ -37,6 +37,7 @@
             "scaleInDock": 1
         },
         "Beginning_Fields.tmj#Animation_Flowers_White": {
+            "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "Beginning_Fields.tmj#Atlas_Buildings": {
@@ -76,6 +77,7 @@
             "scaleInDock": 1
         },
         "Beginning_Fields.tmj#Road": {
+            "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "Beginning_Fields.tmj#Tileset_Ground": {
@@ -170,8 +172,8 @@
             "scale": 1,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 286,
-                "y": 380.5
+                "x": -64,
+                "y": 319.5
             }
         },
         "myMap.tmj#Animation_Flowers_Red": {
@@ -229,8 +231,8 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1022.7272727272727,
-                "y": 1022.7272727272729
+                "x": 1022.7272727272729,
+                "y": 1022.7272727272726
             }
         },
         "tileMap.tmj#Interiors_free_32x32": {

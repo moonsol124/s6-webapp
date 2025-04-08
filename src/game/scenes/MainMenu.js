@@ -11,19 +11,11 @@ export class MainMenu extends Scene
     init() {
         const { width, height } = this.scale;
 
-        // Center and scale background dynamically
-        const background = this.add.image(width / 2, height / 2, 'background')
-        .setOrigin(0.5)
-        .setDisplaySize(width, height);
-    
-    // Apply a green tint to the background (using hexadecimal color for green)
-        background.setTint(0x00ff00);  // Green tint
         this.playerSpeed = 160;
         this.player = null;
         this.cursors = null;
         this.map = null;
         this.lastDirection = 'down';
-
     }
 
     preload() {
@@ -148,6 +140,7 @@ export class MainMenu extends Scene
 
     create ()
     {
+
         this.anims.create({ key: 'move-up', frames: this.anims.generateFrameNumbers('sprite', { start: 54, end: 59 }), frameRate: 10, repeat: -1 });
         this.anims.create({ key: 'move-left', frames: this.anims.generateFrameNumbers('sprite', { start: 60, end: 65 }), frameRate: 10, repeat: -1 });
         this.anims.create({ key: 'move-right', frames: this.anims.generateFrameNumbers('sprite', { start: 48, end: 53 }), frameRate: 10, repeat: -1 });
@@ -191,38 +184,23 @@ export class MainMenu extends Scene
         const roadSlopeAutoLayer = map.createLayer('RockSlopes_Auto', tilesets, offsetX, offsetY);
 
         const waterLayer = map.createLayer('Water', tilesets, offsetX, offsetY);
-        console.log(waterLayer)
         const objectLayer = map.getObjectLayer('Object Layer 1');
-        
+
         const startPoint = objectLayer.objects.find(obj => obj.name === 'start');
         this.player = this.add.sprite(offsetX+startPoint.x, offsetY+startPoint.y, 'sprite').setScale(0.5);
         this.player.setDepth(3);
         this.physics.world.enable(this.player);
         roadSlopeAutoLayer.setCollisionByProperty({ collides: true });
-        this.physics.add.collider(this.player, roadSlopeAutoLayer);
-        
+        this.physics.add.collider(this.player, roadSlopeAutoLayer);        
         roadSlopeLayer.setCollisionByProperty({ collides: true });
-        this.physics.add.collider(this.player, roadSlopeLayer);
+        this.physics.add.collider(this.player, roadSlopeLayer);        
+        this.cameras.main.startFollow(this.player);        
 
-        this.anims.create({
-            key: 'burn',
-            frames: this.anims.generateFrameNumbers('Campfire', { 
-                start: 0, 
-                end: 7 
-            }),
-            frameRate: 12,        // Adjust speed of animation
-            repeat: -1            // Loop forever
-        });
-
-        this.cameras.main.startFollow(this.player);
-        
         if (objectLayer && objectLayer.objects) {
             
             let campfireCreated = false;  // Flag to track if we've created the campfire
 
             objectLayer.objects.forEach(object => {
-                // console.log(object)
-
                 if (object.gid) {
                     // Find the matching tileset by checking gid ranges
                     const matchingTileset = map.tilesets.find(tileset => 
@@ -261,18 +239,30 @@ export class MainMenu extends Scene
                             sprite = this.add.sprite(offsetX+object.x, offsetY+object.y, imageKey);
                             this.physics.world.enable(sprite);
                             sprite.body.setImmovable(true); // Prevent it from being pushed away
-                            this.physics.add.collider(this.player, sprite);
+                            
+                            if (object.name == "house1" ||
+                                object.name == "house2" ||
+                                object.name == "house3" ||
+                                object.name == "house4"
+                            ) {
+                                this.physics.add.collider(this.player, sprite, () => {
+                                    EventBus.emit('current-scene-ready', {obj: sprite, name: object.name});
+                                });
+                            }
 
+                            else {
+                                this.physics.add.collider(this.player, sprite)
+                            }
+                            
                             sprite.setOrigin(0, 1);
                         }
-
                     } else {
                         console.warn('No matching tileset found for gid:', object.gid);
                     }
                 }
             });
         }
-
+        
         EventBus.emit('current-scene-ready', this);
     }
 
@@ -310,7 +300,6 @@ export class MainMenu extends Scene
 
         this.player.body.velocity.normalize().scale(160);
     }
-
     // changeScene ()
     // {
     //     if (this.logoTween)
