@@ -5,12 +5,12 @@
     },
     "activeFile": "Beginning_Fields.tmj",
     "expandedProjectPaths": [
-        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled",
-        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)",
-        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps/Rules",
         "The Fan-tasy Tileset (Free) 1.5.1",
-        ".",
-        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps"
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps",
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled",
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Tiled/Tilemaps/Rules",
+        "The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)",
+        "."
     ],
     "fileStates": {
         "": {
@@ -25,11 +25,11 @@
             "expandedObjectLayers": [
                 10
             ],
-            "scale": 1.5,
-            "selectedLayer": 6,
+            "scale": 3,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 802.6666666666665,
-                "y": 745
+                "x": 606.3333333333333,
+                "y": 704.8333333333333
             }
         },
         "Beginning_Fields.tmj#Animation_Flowers_Red": {
@@ -79,6 +79,9 @@
         "Beginning_Fields.tmj#Road": {
             "dynamicWrapping": false,
             "scaleInDock": 3
+        },
+        "Beginning_Fields.tmj#TilesA2": {
+            "scaleInDock": 1
         },
         "Beginning_Fields.tmj#Tileset_Ground": {
             "scaleInDock": 1
