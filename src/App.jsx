@@ -1,99 +1,111 @@
 import { useRef, useState } from 'react';
-import Phaser from 'phaser';
-import { PhaserGame } from './game/PhaserGame';
-import { Container, Grid, Typography, Box, Paper } from '@mui/material';
-import houses from './houses.json';
+import { PhaserGame } from './game/PhaserGame'; // Make sure path is correct
+import houses from './houses.json'; // Make sure path is correct
 
-function App ()
-{
-    // The sprite can only be moved in the MainMenu Scene
-    const [canMoveSprite, setCanMoveSprite] = useState(true);
-    const [name, setName] = useState("Sample House");
-    const [description, setDescription] = useState("");
-    const [address, setAddress] = useState("");
-    const [contact, setContact] = useState("");
-    const [img, setImg] = useState("https://www.tyrol.tl/images/cms/main/754x435/B_WIDI_kids_park_01_15.jpg");
+function App() {
+  // State variables remain the same
+  const [name, setName] = useState("Sample House");
+  const [description, setDescription] = useState("A lovely sample property description to show wrapping.");
+  const [address, setAddress] = useState("123 Sample Street, Sampleville");
+  const [price, setPrice] = useState("555-123-4567");
 
-    //  References to the PhaserGame component (game and scene are exposed)
-    const phaserRef = useRef();
+  const [img, setImg] = useState("https://st2.depositphotos.com/1823785/8762/i/950/depositphotos_87621996-stock-photo-christmas-sign-snow-fir-tree.jpg"); // Using a placeholder
+  // Phaser Ref remains the same
+  const phaserRef = useRef();
 
-    const findHouse = (id) => {
-        const matchedHouse = houses.find(house => house.id === id);
-        if (matchedHouse != undefined) {
-            setName(matchedHouse.name)
-            setDescription(matchedHouse.description)
-            setAddress(matchedHouse.address)
-            setContact(matchedHouse.contact)
-            setImg(matchedHouse.url)   
-        }
-      };
-
-    // Event emitted from the PhaserGame component
-    const currentScene = (obj) => {
-        setName(obj.name)
-        findHouse(obj.name)
-
-        //setCanMoveSprite(scene.scene.key !== 'MainMenu');
+  // Logic for finding house data remains the same
+  const findHouse = (id) => {
+    const matchedHouse = houses.find(house => house.id === id);
+    if (matchedHouse) {
+      setName(matchedHouse.name || '');
+      setDescription(matchedHouse.description || 'Move around your character to explore the houses!');
+      setAddress(matchedHouse.address || '');
+      setPrice(matchedHouse.price || '');
+      setImg(matchedHouse.image);
+    } else {
+      setName('');
+      setDescription('Move around your character to explore the houses!');
+      setAddress('');
+      setPrice('');
+      setImg('https://st2.depositphotos.com/1823785/8762/i/950/depositphotos_87621996-stock-photo-christmas-sign-snow-fir-tree.jpg');
     }
+  };
 
-      // Arbitrary data for name, description, and address
-      const paddingValue = 1; // Padding value for easy resizing
-      const gapBetweenRows = 2; // Reduced gap between rows (spacing between Grid items)
+  // Event handler for scene changes/object interaction remains the same
+  const currentScene = (obj) => {
+    findHouse(obj.name || obj.id || ''); // Adapt based on what obj contains
+  };
 
-    return (
-        <Box id="app">
-        {/* Phaser game component */}
+  // --- UI Structure with CSS Classes ---
+  return (
+    // Main container
+    <div id="app" className="app-container">
+
+      {/* Left Panel: Phaser Game Placeholder */}
+      <div className="phaser-panel">
+        {/* The PhaserGame component will render the canvas here */}
         <PhaserGame ref={phaserRef} currentActiveScene={currentScene} />
-  
-            {/* Content section with Material-UI styling */}
-            <Container maxWidth={false} sx={{ margin: 2, width: '100%' }}>
-            <Typography variant="h4" gutterBottom>
-            Property Details
-        </Typography>
+        {/* Optional: Add overlays on top of the game */}
+        {/* <div className="game-ui-overlay">Game UI</div> */}
+      </div>
 
-        {/* Grid Layout: 2 columns, 5 rows */}
-        <Grid container spacing={gapBetweenRows} sx={{ width: '100%' }}> {/* Ensure grid spans 100% */}
-            {/* Row 1: Random house image */}
-            <Grid item xs={12}>
-                <Paper elevation={3} sx={{ padding: paddingValue, width: '100%', display: 'flex', justifyContent: 'center' }}>
-                    <img
-                        src={img}
-                        alt="House"
-                        width="100%"
-                    />
-                </Paper>
-            </Grid>
+      {/* Right Panel: Property Information */}
+      <div className="properties-panel">
+        <h2 className="panel-heading">
+        </h2>
 
-        {/* Row 2: Name */}
-        { name && (
-        <Grid item xs={12}>
-            <Paper elevation={3} sx={{ padding: paddingValue, width: '100%' }}>
-            <Typography variant="body1">{name}</Typography>
-            </Paper>
-        </Grid>
-        )}
+        {/* Image Section */}
+        <div className="image-section">
+          <div className="image-wrapper">
+            <img
+              src={img}
+              alt={name || 'Property image'}
+              className="property-image"
+            />
+          </div>
+        </div>
 
-        {/* Row 3: Description */}
-        { description && (
-        <Grid item xs={12}>
-            <Paper elevation={3} sx={{ padding: paddingValue, width: '100%' }}>
-            <Typography variant="body1">{description}</Typography>
-            </Paper>
-        </Grid>
-        )}
+        {/* Text Info Sections Container */}
+        <div className="info-section-container">
 
-        {/* Row 4: Address */}
-        { address && (
-        <Grid item xs={12}>
-            <Paper elevation={3} sx={{ padding: paddingValue, width: '100%' }}>
-            <Typography variant="body1">{address}</Typography>
-            </Paper>
-        </Grid>
-        )}
-        </Grid>
-    </Container>
-      </Box>
-    )
+          {/* Name */}
+          <div className="info-block">
+            <p className="info-label">Name</p>
+            <div className="info-value-container">
+              {/* Display name or empty string to keep structure */}
+              <p className="info-value-text">{name || ''}</p>
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="info-block">
+            <p className="info-label">Description</p>
+            {/* Add a modifier class for potentially taller content */}
+            <div className="info-value-container info-value-container--description">
+              <p className="info-value-text">{description || ''}</p>
+            </div>
+          </div>
+
+          {/* Address */}
+          <div className="info-block">
+            <p className="info-label">Address</p>
+            <div className="info-value-container">
+              <p className="info-value-text">{address || ''}</p>
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div className="info-block">
+            <p className="info-label">Price</p>
+            <div className="info-value-container">
+              <p className="info-value-text">{price || ''}$</p>
+            </div>
+          </div>
+
+        </div> {/* End of info-section-container */}
+      </div> {/* End of Right Panel */}
+    </div> // End of Main Container
+  );
 }
 
-export default App
+export default App;

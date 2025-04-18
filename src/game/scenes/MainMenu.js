@@ -11,7 +11,7 @@ export class MainMenu extends Scene
     init() {
         const { width, height } = this.scale;
 
-        this.playerSpeed = 500;
+        this.playerSpeed = 70;
         this.player = null;
         this.cursors = null;
         this.map = null;
@@ -26,6 +26,9 @@ export class MainMenu extends Scene
         const prefix = '/The Fan-tasy Tileset (Free) 1.5.1/The Fan-tasy Tileset (Free)/Art';
         // character
         this.load.spritesheet('sprite', 'Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Adam_16x16.png', { frameWidth: 16, frameHeight: 32 });
+
+        // snow
+        this.load.image('TilesA2', `/TilesA2.png`);
 
         // Buildings
         this.load.image('CityWall_Gate_1', `${prefix}/Buildings/CityWall_Gate_1.png`);
@@ -161,6 +164,7 @@ export class MainMenu extends Scene
 
         const tilesets = [
             // Ground and atlas tilesets
+            map.addTilesetImage('TilesA2', 'TilesA2'),
             map.addTilesetImage('Tileset_Ground', 'Tileset_Ground'),
             map.addTilesetImage('Atlas_Buildings', 'Atlas_Buildings'),
             map.addTilesetImage('Tileset_RockSlope', 'Tileset_RockSlope'),
@@ -180,20 +184,20 @@ export class MainMenu extends Scene
         const groundLayer = map.createLayer('Ground', tilesets, offsetX, offsetY);
         const flowerLayer = map.createLayer('Flowers', tilesets, offsetX, offsetY);
         const roadLayer = map.createLayer('Road', tilesets, offsetX, offsetY);
-        const roadSlopeLayer = map.createLayer('RockSlopes', tilesets, offsetX, offsetY);
+        // const roadSlopeLayer = map.createLayer('RockSlopes', tilesets, offsetX, offsetY);
         const roadSlopeAutoLayer = map.createLayer('RockSlopes_Auto', tilesets, offsetX, offsetY);
 
         const waterLayer = map.createLayer('Water', tilesets, offsetX, offsetY);
         const objectLayer = map.getObjectLayer('Object Layer 1');
 
         const startPoint = objectLayer.objects.find(obj => obj.name === 'start');
-        this.player = this.add.sprite(offsetX+startPoint.x, offsetY+startPoint.y, 'sprite').setScale(1);
+        this.player = this.add.sprite(offsetX+startPoint.x, offsetY+startPoint.y, 'sprite').setScale(0.7);
         this.player.setDepth(3);
         this.physics.world.enable(this.player);
         roadSlopeAutoLayer.setCollisionByProperty({ collides: true });
         this.physics.add.collider(this.player, roadSlopeAutoLayer);        
-        roadSlopeLayer.setCollisionByProperty({ collides: true });
-        this.physics.add.collider(this.player, roadSlopeLayer);        
+        //roadSlopeLayer.setCollisionByProperty({ collides: true });
+        //this.physics.add.collider(this.player, roadSlopeLayer);        
         this.cameras.main.startFollow(this.player);        
 
         if (objectLayer && objectLayer.objects) {

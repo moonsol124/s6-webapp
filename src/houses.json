@@ -1,34 +1,183 @@
 [
+  {
+     "id": "house1",
+     "name": "Magnificent Ski-In/Ski-Out Chalet",
+     "address": "Courchevel 1850",
+     "price": "€ 8,500,000",
+     "bedrooms": 6,
+     "bathrooms": 6,
+     "area": 450,
+     "image": "https://media.istockphoto.com/id/855637872/nl/foto/dorp-op-saksun-met-gras-op-het-dak.jpg?s=2048x2048&w=is&k=20&c=T5noYF46JE6_nRZo0UDmgjb2SRobwmBxCdiy27hwZ5U=",
+     "images": [
+         "https://picsum.photos/seed/prop1_gal1/800/600",
+         "https://picsum.photos/seed/prop1_gal2/800/600",
+         "https://picsum.photos/seed/prop1_gal3/800/600",
+         "https://picsum.photos/seed/prop1_gal4/800/600"
+     ],
+     "tags": ["Ski-in/Ski-out", "Luxury", "Pool", "Courchevel"],
+     "description": "Experience ultimate luxury with direct piste access in Courchevel 1850. This stunning chalet boasts expansive living areas, a private spa with pool, home cinema, and breathtaking mountain views. Perfect for large groups seeking unparalleled comfort and convenience in one of the world's most prestigious ski resorts.",
+     "features": ["Ski-in/Ski-out Access", "Private Indoor Pool", "Spa & Wellness Area", "Home Cinema", "Multiple Living Areas", "Large Terraces", "Garage Parking", "Wine Cellar"]
+   },
+   {
+     "id": "house2",
+     "name": "Contemporary Apartment with Mont Blanc Views",
+     "address": "Chamonix Centre",
+     "price": "€ 1,200,000",
+     "bedrooms": 3,
+     "bathrooms": 2,
+     "area": 120,
+     "image": "https://cdn.pixabay.com/photo/2018/11/07/11/38/mountain-3800239_1280.jpg",
+     "images": [
+         "https://picsum.photos/seed/prop2_gal1/800/600",
+         "https://picsum.photos/seed/prop2_gal2/800/600",
+         "https://picsum.photos/seed/prop2_gal3/800/600"
+     ],
+     "tags": ["Modern", "View", "Central", "Chamonix"],
+     "description": "Located in vibrant Chamonix centre, this sleek, modern apartment offers floor-to-ceiling windows framing spectacular Mont Blanc vistas. High-end finishes, spacious open-plan living, and a large balcony provide sophisticated comfort. Enjoy immediate access to shops, restaurants, and the Aiguille du Midi lift for year-round alpine adventures.",
+     "features": ["Panoramic Mont Blanc Views", "Central Location", "Modern Design", "High-Quality Finishes", "Balcony", "Underground Parking", "Ski Locker"]
+   },
+   {
+     "id": "house3",
+     "name": "Charming Traditional Chalet",
+     "address": "Méribel Village",
+     "price": "€ 3,800,000",
+     "bedrooms": 5,
+     "bathrooms": 4,
+     "area": 280,
+     "image": "https://cdn.pixabay.com/photo/2016/07/28/09/01/mountains-1547302_1280.jpg",
+     "images": [
+         "https://picsum.photos/seed/prop3_gal1/800/600",
+         "https://picsum.photos/seed/prop3_gal2/800/600",
+         "https://picsum.photos/seed/prop3_gal3/800/600"
+     ],
+     "tags": ["Traditional", "Fireplace", "Family", "Meribel"],
+     "description": "Nestled in picturesque Méribel Village, this beautiful chalet blends traditional Alpine charm with modern comforts. Exposed beams and a large stone fireplace create a warm, inviting atmosphere. Enjoy spacious family living, a private sauna, and easy access to the vast Three Valleys ski area via the nearby Golf chairlift.",
+     "features": ["Traditional Alpine Charm", "Large Stone Fireplace", "Exposed Wooden Beams", "Close to Village Centre", "Easy Ski Area Access", "Garden", "Sauna"]
+   },
     {
-      "id": "house1",
-      "name": "Sample House",
-      "description": "This is a beautiful house with lots of charm and a great location. It is spacious and has a lovely garden.",
-      "address": "12 Rue de la Paix, 75002 Paris, France",
-      "contact": "Téléphone : +33 1 42 68 53 00",
-      "url": "https://img-v2.gtsstatic.net/reno/imagereader.aspx?imageurl=https%3A%2F%2Fm.sothebysrealty.com%2F1103i215%2F289a5x2g8fp24j6v9x8b899pc0i215&option=N&h=472&permitphotoenlargement=false"
-    },
+     "id": "house4",
+     "name": "Cosy Studio near Slopes",
+     "address": "Val Thorens",
+     "price": "€ 450,000",
+     "bedrooms": 1,
+     "bathrooms": 1,
+     "area": 35,
+     "image": "https://cdn.pixabay.com/photo/2024/01/08/21/40/mountain-8496397_1280.jpg",
+     "images": [
+         "https://picsum.photos/seed/prop4_gal1/800/600",
+         "https://picsum.photos/seed/prop4_gal2/800/600"
+     ],
+     "tags": ["Studio", "Affordable", "Ski Access", "Val Thorens"],
+     "description": "An ideal pied-à-terre in Europe's highest resort, Val Thorens. This well-appointed studio offers smart living space, a functional kitchenette, and a balcony. Located conveniently close to the slopes and resort amenities, it represents an excellent entry point for ownership or a solid rental investment in the Three Valleys.",
+     "features": ["Ski-Slope Proximity", "Functional Layout", "Balcony", "Ski Locker", "Resort Amenities Access", "Rental Potential"]
+   },
     {
-      "id": "house2",
-      "name": "Modern Villa",
-      "description": "A sleek, modern villa with floor-to-ceiling windows and a scenic view.",
-      "address": "89 Avenue Victor Hugo, 75116 Paris, France",
-      "contact": "Téléphone : +33 1 45 00 12 34",
-      "url": "https://res.cloudinary.com/brickandbatten/images/w_2560,h_1566,c_scale/f_auto,q_auto/v1713267421/wordpress_assets/313364-Alabaster-Caviar-TeakStain-A-copy/313364-Alabaster-Caviar-TeakStain-A-copy.jpg?_i=AA"
-    },
+     "id": "prop5",
+     "name": "Renovated Farmhouse with Character",
+     "address": "Near Megève",
+     "price": "€ 2,100,000",
+     "bedrooms": 4,
+     "bathrooms": 3,
+     "area": 320,
+     "image": "https://cdn.pixabay.com/photo/2024/01/09/13/08/wooden-house-8497574_1280.jpg",
+     "images": [
+         "https://picsum.photos/seed/prop5_gal1/800/600",
+         "https://picsum.photos/seed/prop5_gal2/800/600",
+         "https://picsum.photos/seed/prop5_gal3/800/600"
+     ],
+     "tags": ["Renovated", "Quiet", "Spacious", "Megève Area"],
+     "description": "Discover authentic Alpine living in this beautifully renovated farmhouse near the prestigious resort of Megève. Retaining original character while incorporating modern luxury, it features spacious living areas, a large garden, and serene mountain views. Offers a peaceful retreat with easy access to world-class skiing, dining, and shopping.",
+     "features": ["Authentic Character", "High-Quality Renovation", "Large Garden", "Mountain Views", "Quiet Location", "Spacious Interiors", "Close to Megève"]
+   },
+   {
+     "id": "prop6",
+     "name": "Luxury Duplex Penthouse",
+     "address": "Val d'Isère Centre",
+     "price": "€ 4,200,000",
+     "bedrooms": 4,
+     "bathrooms": 4,
+     "area": 180,
+     "image": "https://cdn.pixabay.com/photo/2021/01/13/13/46/house-5914171_1280.jpg",
+     "images": [
+         "https://picsum.photos/seed/prop6_gal1/800/600",
+         "https://picsum.photos/seed/prop6_gal2/800/600",
+         "https://picsum.photos/seed/prop6_gal3/800/600"
+     ],
+     "tags": ["Penthouse", "Luxury", "Central", "View", "Val d'Isère"],
+     "description": "Occupying the top floors of a prestigious residence in Val d'Isère centre, this exceptional duplex penthouse offers sophisticated living and stunning views. Features include double-height ceilings in the living area, bespoke finishes, multiple balconies, and private lift access. Walk to slopes, shops, and renowned après-ski venues effortlessly.",
+     "features": ["Duplex Layout", "Central Val d'Isère Location", "Panoramic Views", "High Ceilings", "Bespoke Finishes", "Private Lift Access", "Multiple Balconies", "Underground Parking"]
+   },
+   {
+     "id": "prop7",
+     "name": "New Build Chalet Program",
+     "address": "Les Gets",
+     "price": "From € 1,850,000",
+     "bedrooms": 4,
+     "bathrooms": 4,
+     "area": 220,
+     "image": "https://cdn.pixabay.com/photo/2022/10/11/18/33/house-7514941_1280.jpg",
+     "images": [
+         "https://picsum.photos/seed/prop7_gal1/800/600",
+         "https://picsum.photos/seed/prop7_gal2/800/600",
+         "https://picsum.photos/seed/prop7_gal3/800/600"
+     ],
+     "tags": ["New Build", "Customisable", "Les Gets", "Portes du Soleil"],
+     "description": "An exciting opportunity to acquire a brand-new chalet in the charming resort of Les Gets, part of the vast Portes du Soleil ski area. This program offers high-quality construction with customizable interior finishes. Enjoy modern amenities, energy efficiency, and reduced notary fees in a fantastic dual-season location.",
+     "features": ["New Construction", "Customisable Interiors", "High Energy Performance", "Reduced Notary Fees", "Garage", "Garden/Terrace Option", "Portes du Soleil Access"]
+   },
+   {
+     "id": "prop8",
+     "name": "Ski-in Apartment Residence",
+     "address": "Alpe d'Huez",
+     "price": "€ 850,000",
+     "bedrooms": 2,
+     "bathrooms": 2,
+     "area": 75,
+     "image": "https://cdn.pixabay.com/photo/2023/09/22/10/20/mountains-8268760_1280.jpg",
+     "images": [
+         "https://picsum.photos/seed/prop8_gal1/800/600",
+         "https://picsum.photos/seed/prop8_gal2/800/600",
+         "https://picsum.photos/seed/prop8_gal3/800/600"
+     ],
+     "tags": ["Ski-in", "Apartment", "Residence Services", "Alpe d'Huez"],
+     "description": "Enjoy ultimate convenience in this modern ski-in apartment within a managed residence in sunny Alpe d'Huez. The property offers comfortable living space, two bedrooms, two bathrooms, and a balcony with resort views. Benefit from residence facilities potentially including reception, ski lockers, and wellness areas. Strong rental potential.",
+     "features": ["Ski-in Access", "Managed Residence", "Balcony with View", "Modern Comfort", "Ski Locker", "Potential Residence Amenities (Pool/Spa)", "Rental Potential"]
+   },
+   {
+     "id": "prop9",
+     "name": "Large Family Chalet Near Lifts",
+     "address": "La Plagne Montchavin",
+     "price": "€ 1,950,000",
+     "bedrooms": 6,
+     "bathrooms": 5,
+     "area": 300,
+     "image": "https://cdn.pixabay.com/photo/2014/11/21/17/17/house-540796_1280.jpg",
+     "images": [
+         "https://picsum.photos/seed/prop9_gal1/800/600",
+         "https://picsum.photos/seed/prop9_gal2/800/600",
+         "https://picsum.photos/seed/prop9_gal3/800/600"
+     ],
+     "tags": ["Family", "Spacious", "La Plagne", "Paradiski"],
+     "description": "Perfect for large families or groups, this substantial chalet is situated in the charming village of Montchavin, linking directly to the vast Paradiski area (La Plagne/Les Arcs). Offering multiple bedrooms, generous living spaces, a games room, and proximity to the lifts, it’s an ideal base for all ages.",
+     "features": ["6 Bedrooms", "Multiple Living Areas", "Games Room/Play Area", "Close to Lifts (Vanoise Express link)", "Paradiski Access", "Village Location", "Large Terrace/Garden"]
+   },
     {
-      "id": "house3",
-      "name": "Cozy Cottage",
-      "description": "Charming little cottage tucked away in the woods. Perfect for a quiet retreat.",
-      "address": "17 Chemin du Lac, 69006 Lyon, France",
-      "contact": "Téléphone : +33 4 78 12 45 67",
-      "url": "https://cdn.sanity.io/images/5azy6oei/production/5a088a83f0dda1f15ec8fb0d51a14bafcdda54c9-5464x3640.jpg?w=700&fm=jpg&q=80"
-    },
-    {
-      "id": "house4",
-      "name": "Cozy Cottage",
-      "description": "Charming little cottage tucked away in the woods. Perfect for a quiet retreat.",
-      "address": "3 Rue des Lilas, 13001 Marseille, France",
-      "contact": "Téléphone : +33 4 91 00 98 76",
-      "url": "https://img.jamesedition.com/listing_images/2024/11/13/13/59/59/dc740cec-4998-499d-935a-ffb69f7c8b6d/je/760x470xc.jpg"
-    }
-  ]
+     "id": "prop10",
+     "name": "Secluded Mountain Retreat",
+     "address": "Saint-Martin-de-Belleville Area",
+     "price": "€ 2,900,000",
+     "bedrooms": 5,
+     "bathrooms": 5,
+     "area": 350,
+     "image": "https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_1280.jpg",
+     "images": [
+         "https://picsum.photos/seed/prop10_gal1/800/600",
+         "https://picsum.photos/seed/prop10_gal2/800/600",
+         "https://picsum.photos/seed/prop10_gal3/800/600",
+         "https://picsum.photos/seed/prop10_gal4/800/600"
+     ],
+     "tags": ["Secluded", "Luxury", "View", "Saint-Martin-de-Belleville", "Three Valleys"],
+     "description": "Escape to tranquility in this stunning, secluded chalet near the authentic village of Saint-Martin-de-Belleville. Offering privacy, breathtaking panoramic views, and luxurious finishes throughout. Features include a beautiful spa area, expansive terraces, and easy driving access to the Three Valleys ski domain for world-class skiing.",
+     "features": ["Privacy and Seclusion", "Panoramic Mountain Views", "Luxury Finishes", "Spa/Wellness Area", "Large Terraces", "Authentic Village Proximity", "Three Valleys Access"]
+   }
+ ]
