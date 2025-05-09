@@ -9,11 +9,6 @@ export class Preloader extends Scene {
         // Get the current game width & height for responsive positioning
         const { width, height } = this.scale;
 
-        // Center and scale background dynamically
-        this.add.image(width / 2, height / 2, 'background')
-            .setOrigin(0.5)
-            .setDisplaySize(width, height); 
-
         // Center the progress bar
         this.add.rectangle(width / 2, height / 2, 468, 32).setStrokeStyle(1, 0xffffff);
 
@@ -29,8 +24,6 @@ export class Preloader extends Scene {
     preload() {
         // Load assets
         this.load.setPath('assets');
-        this.load.image('logo', 'logo.png');
-        this.load.image('star', 'star.png');
     }
 
     create() {

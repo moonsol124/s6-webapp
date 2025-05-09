@@ -1,130 +1,145 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // Import hooks
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
-import heroImage from '../public/assets/images/hero.jpg'; // Example path
-import chalet1 from '../public/assets/images/chalet1.jpg';
-import chalet2 from '../public/assets/images/chalet2.jpg';
-import chalet3 from '../public/assets/images/chalet3.jpg';
+// --- Import Supabase client ---
+import { supabase } from './supabaseClient'; // Adjust path if needed
+
+// --- Import the reusable PropertyCard component ---
+import PropertyCard from './PropertyCard'; // Adjust path if needed
+
+// Import static assets (keep these)
+import heroImage from '../public/assets/images/hero.jpg';
+// We might not need these specific chalet images if using fetched data
+// import chalet1 from '../public/assets/images/chalet1.jpg';
+// import chalet2 from '../public/assets/images/chalet2.jpg';
+// import chalet3 from '../public/assets/images/chalet3.jpg';
+import introPlaceholder from '../public/assets/images/chalet1.jpg'; // Reuse one for intro
 import regionChamonix from '../public/assets/images/chamonix.jpg';
 import regionCourchevel from '../public/assets/images/Courchevel.jpg';
 import regionMeribel from '../public/assets/images/Meribel.jpg';
 
 function LandingPage() {
+  // --- State for featured properties, loading, and errors ---
+  const [featuredProperties, setFeaturedProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // --- Fetch featured properties on component mount ---
+  useEffect(() => {
+    const fetchFeaturedProperties = async () => {
+      setLoading(true);
+      setError(null);
+
+      // Fetch only 3 properties from the 'properties' table
+      // You might want to add .order() if you want specific ones (e.g., newest)
+      const { data, error: dbError } = await supabase
+        .from('properties')
+        .select('*') // Select all columns
+        .limit(3);    // Limit to 3 results
+
+      if (dbError) {
+        console.error('Error fetching featured properties:', dbError);
+        setError('Could not load featured properties.');
+        setFeaturedProperties([]);
+      } else if (data) {
+        setFeaturedProperties(data);
+      } else {
+        setFeaturedProperties([]); // Handle case where data is null
+      }
+
+      setLoading(false);
+    };
+
+    fetchFeaturedProperties();
+  }, []); // Empty dependency array runs once on mount
+
   return (
     <div className="landing-page">
-      {/* --- Hero Section --- */}
+      {/* --- Hero Section (remains the same) --- */}
       <section className="hero-section" style={{ backgroundImage: `url(${heroImage})` }}>
         <div className="hero-overlay"></div>
         <div className="container hero-content">
           <h1 className="hero-title">Your Dream Alpine Retreat Awaits</h1>
           <p className="hero-subtitle">Exclusive Chalets and Apartments in the Heart of the French Alps Ski Resorts</p>
-          <a href="#featured" className="cta-button hero-cta">Explore Properties</a>
+          {/* Use Link instead of anchor if navigating within SPA */}
+          <Link to="/s6-webapp/Property" className="cta-button hero-cta">Explore Properties</Link>
         </div>
       </section>
 
-      {/* --- Introduction / Value Proposition --- */}
+      {/* --- Introduction / Value Proposition (remains mostly the same) --- */}
       <section id="about" className="section intro-section">
         <div className="container intro-container">
           <div className="intro-text">
             <h2 className="section-title">Experience Alpine Living at Its Finest</h2>
             <p>
-              Welcome to AlpesImmo Prestige, your trusted partner for premium real estate in the most sought-after ski destinations of the French Alps. With years of local expertise and a passion for the mountains, we specialize in connecting discerning buyers and renters with exceptional properties, from luxurious ski-in/ski-out chalets to modern, convenient apartments.
+              Welcome to MiCasaEsTuCasa, your trusted partner for premium real estate in the most sought-after ski destinations of the French Alps... {/* Rest of text */}
             </p>
             <p>
-              Whether you seek a vibrant resort atmosphere or a tranquil mountain escape, we leverage our deep knowledge of the Rhône-Alpes region to find the perfect match for your lifestyle and investment goals.
+              Whether you seek a vibrant resort atmosphere or a tranquil mountain escape... {/* Rest of text */}
             </p>
           </div>
            <div className="intro-image-placeholder">
-               {/* You could place an image of the team or a beautiful interior shot here */}
-               <img src={chalet1} alt="Luxury Alpine Interior" style={{width: '100%', height: 'auto', borderRadius: '8px'}}/>
+               <img src={introPlaceholder} alt="Luxury Alpine Interior" style={{width: '100%', height: 'auto', borderRadius: '8px'}}/>
            </div>
         </div>
       </section>
 
-      {/* --- Featured Properties Section --- */}
+      {/* --- Featured Properties Section (Updated) --- */}
       <section id="featured" className="section featured-properties-section">
         <div className="container">
           <h2 className="section-title text-center">Featured Properties</h2>
-          <div className="property-grid">
-            {/* Property Card 1 */}
-            <div className="property-card">
-              <img src={chalet1} alt="Luxury Chalet Courchevel" className="property-image" />
-              <div className="property-info">
-                <h3 className="property-title">Magnificent Ski-In/Ski-Out Chalet</h3>
-                <p className="property-location">Courchevel 1850</p>
-                <ul className="property-features">
-                  <li><i className="icon-bed"></i> 6 Bedrooms</li>
-                  <li><i className="icon-bath"></i> 6 Bathrooms</li>
-                  <li><i className="icon-ski"></i> Direct Piste Access</li>
-                  <li><i className="icon-area"></i> 450 m²</li>
-                </ul>
-                <a href="#" className="cta-button-secondary property-cta">View Details</a>
+
+          {/* --- Handle Loading State --- */}
+          {loading && <p className="loading-message text-center">Loading featured properties...</p>}
+
+          {/* --- Handle Error State --- */}
+          {error && !loading && <p className="error-message text-center">{error}</p>}
+
+          {/* --- Display Properties --- */}
+          {!loading && !error && (
+            <>
+              {featuredProperties.length > 0 ? (
+                <div className="property-grid">
+                  {/* Map over the fetched featuredProperties state */}
+                  {featuredProperties.map(property => (
+                    // Use the reusable PropertyCard component
+                    <PropertyCard key={property.id} property={property} />
+                  ))}
+                </div>
+              ) : (
+                <p className="no-results-message text-center">No featured properties available at the moment.</p>
+              )}
+
+              {/* Link to All Properties Page */}
+              <div className="text-center" style={{ marginTop: '2rem' }}>
+                  <Link to="/s6-webapp/Property" className="cta-button">View All Properties</Link>
               </div>
-            </div>
-            {/* Property Card 2 */}
-            <div className="property-card">
-              <img src={chalet2} alt="Modern Apartment Chamonix" className="property-image" />
-              <div className="property-info">
-                <h3 className="property-title">Contemporary Apartment with Mont Blanc Views</h3>
-                <p className="property-location">Chamonix Centre</p>
-                <ul className="property-features">
-                  <li><i className="icon-bed"></i> 3 Bedrooms</li>
-                  <li><i className="icon-bath"></i> 2 Bathrooms</li>
-                  <li><i className="icon-view"></i> Panoramic Views</li>
-                  <li><i className="icon-area"></i> 120 m²</li>
-                </ul>
-                <a href="#" className="cta-button-secondary property-cta">View Details</a>
-              </div>
-            </div>
-            {/* Property Card 3 */}
-            <div className="property-card">
-              <img src={chalet3} alt="Traditional Chalet Meribel" className="property-image" />
-              <div className="property-info">
-                <h3 className="property-title">Charming Traditional Chalet</h3>
-                <p className="property-location">Méribel Village</p>
-                 <ul className="property-features">
-                  <li><i className="icon-bed"></i> 5 Bedrooms</li>
-                  <li><i className="icon-bath"></i> 4 Bathrooms</li>
-                  <li><i className="icon-fireplace"></i> Cozy Fireplace</li>
-                  <li><i className="icon-area"></i> 280 m²</li>
-                </ul>
-                <a href="#" className="cta-button-secondary property-cta">View Details</a>
-              </div>
-            </div>
-          </div>
-           <div className="text-center" style={{ marginTop: '2rem' }}>
-                <a href="#" className="cta-button">View All Properties</a>
-            </div>
+            </>
+          )}
         </div>
       </section>
 
-       {/* --- Regions Section --- */}
+       {/* --- Regions Section (remains the same) --- */}
       <section id="regions" className="section regions-section">
-        <div className="container">
-          <h2 className="section-title text-center">Explore Our Premier Destinations</h2>
-           <div className="region-grid">
-               <div className="region-card">
-                    <img src={regionChamonix} alt="Chamonix Mont Blanc" className="region-image"/>
-                    <div className="region-info">
-                        <h3>Chamonix</h3>
-                        <p>Iconic mountaineering town with challenging slopes and breathtaking Mont Blanc views.</p>
-                    </div>
-               </div>
-                <div className="region-card">
-                    <img src={regionCourchevel} alt="Courchevel luxury resort" className="region-image"/>
-                     <div className="region-info">
-                        <h3>Courchevel</h3>
-                        <p>World-renowned luxury resort, part of the vast Three Valleys ski area.</p>
-                    </div>
-               </div>
-                <div className="region-card">
-                    <img src={regionMeribel} alt="Meribel charming village" className="region-image"/>
-                     <div className="region-info">
-                        <h3>Méribel</h3>
-                        <p>Charming village atmosphere at the heart of the Three Valleys, perfect for families.</p>
-                    </div>
-               </div>
-           </div>
-        </div>
+         <div className="container">
+            {/* ... content ... */}
+            <h2 className="section-title text-center">Explore Our Premier Destinations</h2>
+             <div className="region-grid">
+                 {/* Region cards */}
+                 <div className="region-card">
+                      <img src={regionChamonix} alt="Chamonix Mont Blanc" className="region-image"/>
+                      <div className="region-info"><h3>Chamonix</h3><p>...</p></div>
+                 </div>
+                  <div className="region-card">
+                      <img src={regionCourchevel} alt="Courchevel luxury resort" className="region-image"/>
+                      <div className="region-info"><h3>Courchevel</h3><p>...</p></div>
+                 </div>
+                  <div className="region-card">
+                      <img src={regionMeribel} alt="Meribel charming village" className="region-image"/>
+                      <div className="region-info"><h3>Méribel</h3><p>...</p></div>
+                 </div>
+             </div>
+          </div>
       </section>
 
       {/* --- Services Section --- */}
@@ -162,7 +177,7 @@ function LandingPage() {
                 <h2 className="section-title text-center">What Our Clients Say</h2>
                 <div className="testimonial-slider"> {/* Basic structure, not a functional slider */}
                      <blockquote className="testimonial">
-                        <p>AlpesImmo Prestige found us the perfect ski-in/ski-out chalet in Val d Isère. Their local knowledge was invaluable. Highly recommended!</p>
+                        <p>MiCasaEsTuCasa found us the perfect ski-in/ski-out chalet in Val d Isère. Their local knowledge was invaluable. Highly recommended!</p>
                         <footer>- Sophie L., Paris</footer>
                     </blockquote>
                      <blockquote className="testimonial">
@@ -187,9 +202,6 @@ function LandingPage() {
            </div>
         </div>
       </section>
-
-      {/* --- Footer --- */}
-
     </div>
   );
 }

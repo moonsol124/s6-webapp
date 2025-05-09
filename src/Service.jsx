@@ -29,7 +29,7 @@ function ServicesPage() {
       <section className="section service-intro">
         <div className="container text-center">
           <p>
-            At AlpesImmo Prestige, we offer more than just property listings. We provide a full spectrum of expert real estate services designed to make your Alpine property journey seamless and successful. Our dedicated team combines deep local knowledge with international standards to deliver exceptional results, whether you're a first-time buyer, seasoned investor, or property owner.
+            At MiCasaEsTuCasa, we offer more than just property listings. We provide a full spectrum of expert real estate services designed to make your Alpine property journey seamless and successful. Our dedicated team combines deep local knowledge with international standards to deliver exceptional results, whether you're a first-time buyer, seasoned investor, or property owner.
           </p>
         </div>
       </section>
@@ -125,7 +125,7 @@ function ServicesPage() {
       {/* --- Why Choose Us Section --- */}
       <section className="section why-choose-us-section">
         <div className="container">
-          <h2 className="section-title text-center">Why Partner with AlpesImmo Prestige?</h2>
+          <h2 className="section-title text-center">Why Partner with MiCasaEsTuCasa?</h2>
           <div className="why-choose-us-grid">
             <div className="why-choose-item">
               {/* Replace with actual SVG or icon font */}

@@ -11,12 +11,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <BrowserRouter>
         <header className="main-header">
         <div className="container header-container">
-          <div className="logo"><Link to="/">MiCasaEsTuCasa</Link></div>
+          <div className="logo"><Link to="/s6-webapp/">MiCasaEsTuCasa</Link></div>
           <nav className="main-nav">
             <ul>
-            <li><Link to="/Explore">Explore</Link></li>
-            <li><Link to="/Property">Properties</Link></li>
-            <li><Link to="/Service">Service</Link></li>
+            <li><Link to="/s6-webapp/Explore">Explore</Link></li>
+            <li><Link to="/s6-webapp/Property">Properties</Link></li>
+            <li><Link to="/s6-webapp/Service">Service</Link></li>
               <li><a href="#about">About Us</a></li>
               <li><a href="#contact" className="nav-contact-button">Contact</a></li>
             </ul>
@@ -25,10 +25,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </div>
       </header>
             <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/Explore" element={<App />} />
-                <Route path="/Property" element={<PropertyPage />} />
-                <Route path="/Service" element={<Service />} />
+                <Route path="/s6-webapp/" element={<Landing />} />
+                <Route path="/s6-webapp/Explore" element={<App />} />
+                <Route path="/s6-webapp/Property" element={<PropertyPage />} />
+                <Route path="/s6-webapp/Service" element={<Service />} />
             </Routes>
             <footer className="enhanced-footer"> {/* Changed class name for clarity */}
         <div className="container">
@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             {/* Column 1: Brand & About */}
             <div className="footer-column footer-brand-about">
               {/* Use Link for logo */}
-              <Link to="/" className="footer-logo">AlpesImmo Prestige</Link>
+              <Link to="/" className="footer-logo">MiCasaEsTuCasa</Link>
               <p className="footer-about-text">
                 Your trusted partner for premium real estate in the heart of the French Alps. We connect discerning clients with exceptional chalets and apartments.
               </p>
@@ -72,7 +72,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <address className="footer-contact">
                 <p><i className="icon-location"></i> 123 Rue Principale, 74400 Chamonix, France</p> {/* Placeholder Icon */}
                 <p><i className="icon-phone"></i> <a href="tel:+33479000000">+33 4 79 XX XX XX</a></p> {/* Placeholder Icon */}
-                <p><i className="icon-email"></i> <a href="mailto:contact@alpesimmo-prestige.fr">contact@alpesimmo-prestige.fr</a></p> {/* Placeholder Icon */}
+                <p><i className="icon-email"></i> <a href="mailto:contact@miCasaEsTuCasa.com">contact@MiCasaEsTuCasa.com</a></p> {/* Placeholder Icon */}
               </address>
               <div className="footer-social">
                 <h5 className="footer-subheading">Follow Us</h5>
@@ -87,7 +87,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
           {/* Bottom Bar: Copyright & Legal */}
           <div className="footer-bottom">
-            <p>© {new Date().getFullYear()} AlpesImmo Prestige. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} MiCasaEsTuCasa. All rights reserved.</p>
             <nav className="footer-legal-nav">
                <Link to="/privacy-policy">Privacy Policy</Link> | <Link to="/terms-of-service">Terms of Service</Link>
             </nav>

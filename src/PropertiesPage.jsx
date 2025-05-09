@@ -1,37 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import React, { useState, useEffect, useMemo } from 'react'; // Import useMemo
+import { Link } from 'react-router-dom';
 
-// --- Import the JSON data ---
-// Vite/React can directly import JSON files
-import propertiesData from './houses.json';
+// --- Import the Supabase client ---
+import { supabase } from './supabaseClient'; // Adjust the path if needed
 
-// --- Reusable Property Card (Updated for new data structure) ---
+// --- Reusable Property Card (No changes needed) ---
 function PropertyCard({ property }) {
-  // Use placeholder icons or import an icon library
-  const renderIcon = (type) => <i className={`icon-${type}`}></i>;
+  const renderIcon = (type) => {
+    switch (type) {
+      case 'bed': return '🛏️';
+      case 'bath': return '🛁';
+      case 'area': return '📐';
+      case 'tag': return '🏷️';
+      default: return '';
+    }
+  };
 
   return (
-    // Reuse existing style for the card container
     <div className="property-card">
-        {/* Use the image URL from the data */}
-        <img src={property.image} alt={property.name} className="property-image" />
-        <div className="property-info">
-            {/* Use 'name' property */}
-            <h3 className="property-title">{property.name}</h3>
-            {/* Use 'address' property */}
-            <p className="property-location">{property.address}</p>
-            <p className="property-price">{property.price}</p>
-            <ul className="property-features">
-            {property.bedrooms && <li>{renderIcon('bed')} {property.bedrooms} Bed{property.bedrooms > 1 ? 's' : ''}</li>}
-            {property.bathrooms && <li>{renderIcon('bath')} {property.bathrooms} Bath{property.bathrooms > 1 ? 's' : ''}</li>}
-            {property.area && <li>{renderIcon('area')} {property.area} m²</li>}
-            {/* Optionally display a primary tag */}
-            {property.tags && property.tags[0] && <li>{renderIcon('tag')} {property.tags[0]}</li>}
-            </ul>
-            {/* Use Link component for internal navigation */}
-            <Link to={`/properties/${property.id}`} className="cta-button-secondary property-cta">
-            View Details
-            </Link>
+      <img src={property.image || 'https://via.placeholder.com/400x300?text=No+Image'} alt={property.name || 'Property Image'} className="property-image" />
+      <div className="property-info">
+        <h3 className="property-title">{property.name || 'Unnamed Property'}</h3>
+        <p className="property-location">{property.address || 'Address not available'}</p>
+        <p className="property-price">{property.price || 'Price not available'}</p>
+        <ul className="property-features">
+          {property.bedrooms != null && <li>{renderIcon('bed')} {property.bedrooms} Bed{property.bedrooms !== 1 ? 's' : ''}</li>}
+          {property.bathrooms != null && <li>{renderIcon('bath')} {property.bathrooms} Bath{property.bathrooms !== 1 ? 's' : ''}</li>}
+          {property.area != null && <li>{renderIcon('area')} {property.area} m²</li>}
+          {property.tags && property.tags[0] && <li>{renderIcon('tag')} {property.tags[0]}</li>}
+        </ul>
+        <Link to={`/properties/${property.id}`} className="cta-button-secondary property-cta">
+          View Details
+        </Link>
       </div>
     </div>
   );
@@ -39,73 +39,118 @@ function PropertyCard({ property }) {
 
 
 function PropertiesPage() {
-  // State to hold the full list of properties from JSON
+  // State for all properties fetched
   const [allProperties, setAllProperties] = useState([]);
-  // State for the properties currently displayed (after filtering)
+  // State for filtered properties (before pagination)
   const [filteredProperties, setFilteredProperties] = useState([]);
-  // State for the search term input
+  // Filter states
   const [searchTerm, setSearchTerm] = useState('');
-  // State for selected property type (example filter)
   const [selectedType, setSelectedType] = useState('');
-   // State for selected bedrooms (example filter)
   const [selectedBeds, setSelectedBeds] = useState('');
+  // Loading and Error states
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Load data from the imported JSON on component mount
+  // --- Pagination State ---
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9; // Display 9 items per page
+
+  // --- Fetch data from Supabase on component mount ---
   useEffect(() => {
-    // Set both the full list and the initially displayed list
-    setAllProperties(propertiesData);
-    setFilteredProperties(propertiesData);
-  }, []); // Empty dependency array ensures this runs only once on mount
+    const fetchProperties = async () => {
+      setLoading(true);
+      setError(null);
+      setCurrentPage(1); // Reset page number on new fetch
 
-  // Combined filtering logic
-  const applyFilters = () => {
-      let results = allProperties;
-      const lowerSearchTerm = searchTerm.toLowerCase();
+      const { data, error: dbError } = await supabase
+        .from('properties')
+        .select('*');
 
-      // Filter by search term (name, address, tags)
-      if (lowerSearchTerm) {
-          results = results.filter(prop =>
-              prop.name.toLowerCase().includes(lowerSearchTerm) ||
-              prop.address.toLowerCase().includes(lowerSearchTerm) ||
-              (prop.tags && prop.tags.some(tag => tag.toLowerCase().includes(lowerSearchTerm)))
-          );
+      if (dbError) {
+        console.error('Error fetching properties:', dbError);
+        setError('Failed to load properties. Please try again later.');
+        setAllProperties([]);
+        setFilteredProperties([]);
+      } else if (data) {
+        setAllProperties(data);
+        setFilteredProperties(data); // Apply filters will run after this state updates
+      } else {
+         setAllProperties([]);
+         setFilteredProperties([]);
       }
+      setLoading(false);
+    };
 
-      // Filter by property type (example: checking tags)
-      if (selectedType) {
-           results = results.filter(prop =>
-              prop.tags && prop.tags.some(tag => tag.toLowerCase() === selectedType.toLowerCase())
-              // Or if you add a specific 'type' field to your JSON:
-              // prop.type.toLowerCase() === selectedType.toLowerCase()
-          );
-      }
+    fetchProperties();
+  }, []); // Runs only once on mount
 
-       // Filter by minimum bedrooms
-       if (selectedBeds) {
-           const minBeds = parseInt(selectedBeds, 10);
-           results = results.filter(prop => prop.bedrooms >= minBeds);
-       }
+  // --- Apply Filters (Client-side) ---
+  useEffect(() => {
+    // Don't filter if initial data hasn't loaded yet
+    if (loading) return;
 
-      setFilteredProperties(results);
+    let results = allProperties;
+    const lowerSearchTerm = searchTerm.toLowerCase().trim();
+
+    // Apply search term filter
+    if (lowerSearchTerm) {
+      results = results.filter(prop =>
+        (prop.name && prop.name.toLowerCase().includes(lowerSearchTerm)) ||
+        (prop.address && prop.address.toLowerCase().includes(lowerSearchTerm)) ||
+        (prop.description && prop.description.toLowerCase().includes(lowerSearchTerm)) ||
+        (prop.tags && prop.tags.some(tag => tag.toLowerCase().includes(lowerSearchTerm))) ||
+        (prop.features && prop.features.some(feat => feat.toLowerCase().includes(lowerSearchTerm)))
+      );
+    }
+
+    // Apply type filter
+    if (selectedType) {
+      results = results.filter(prop =>
+        prop.tags && prop.tags.some(tag => tag.toLowerCase() === selectedType.toLowerCase())
+      );
+    }
+
+    // Apply beds filter
+    if (selectedBeds) {
+      const minBeds = parseInt(selectedBeds, 10);
+      results = results.filter(prop => prop.bedrooms != null && prop.bedrooms >= minBeds);
+    }
+
+    setFilteredProperties(results);
+    setCurrentPage(1); // Reset to page 1 whenever filters change
+
+  }, [searchTerm, selectedType, selectedBeds, allProperties, loading]); // Re-run when filters or base data changes
+
+
+  // --- Calculate Pagination Values using useMemo ---
+  const { currentItems, totalPages } = useMemo(() => {
+    const totalItems = filteredProperties.length;
+    const calculatedTotalPages = Math.ceil(totalItems / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const itemsToDisplay = filteredProperties.slice(startIndex, endIndex);
+
+    return { currentItems: itemsToDisplay, totalPages: calculatedTotalPages };
+  }, [filteredProperties, currentPage, itemsPerPage]); // Recalculate only when these change
+
+  // --- Pagination Handlers ---
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
   };
 
-  // Handle form submission to apply filters
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
+  // Handle form submission (optional, as filters apply on change)
   const handleFilterSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission page reload
-    applyFilters();
+    event.preventDefault();
+    // applyFilters logic is already handled by the useEffect hook
+    // We could potentially trigger a scroll to top here if desired
   };
-
-  // Optional: Apply filters immediately when dropdowns change
-  useEffect(() => {
-      // Re-apply filters whenever search term, type, or beds change
-      // Debouncing could be added here for the search term for better performance
-      applyFilters();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm, selectedType, selectedBeds, allProperties]); // Re-run when these change
 
 
   return (
-    // Keep the overall page structure
     <div className="properties-page">
       {/* --- Page Title --- */}
       <section className="page-title-section">
@@ -118,32 +163,36 @@ function PropertiesPage() {
       {/* --- Search & Filter Section --- */}
       <section className="search-filter-section section">
         <div className="container">
-          {/* Use onSubmit on the form */}
           <form className="filter-form" onSubmit={handleFilterSubmit}>
+            {/* Input fields remain the same */}
             <input
               type="text"
-              placeholder="Search by name, address, feature..."
+              placeholder="Search name, location, features..."
               className="filter-input filter-search-term"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)} // Update search term state
+              onChange={(e) => setSearchTerm(e.target.value)}
+              disabled={loading}
             />
             <select
               className="filter-input filter-select"
               value={selectedType}
-              onChange={(e) => setSelectedType(e.target.value)} // Update type state
+              onChange={(e) => setSelectedType(e.target.value)}
+              disabled={loading}
             >
               <option value="">Property Type</option>
-              {/* These values should match potential tags or a 'type' field */}
               <option value="Chalet">Chalet</option>
               <option value="Apartment">Apartment</option>
               <option value="Farmhouse">Farmhouse</option>
               <option value="Studio">Studio</option>
               <option value="Penthouse">Penthouse</option>
+              <option value="Luxury">Luxury</option>
+              <option value="Ski-in/Ski-out">Ski-in/Ski-out</option>
             </select>
             <select
               className="filter-input filter-select"
               value={selectedBeds}
-              onChange={(e) => setSelectedBeds(e.target.value)} // Update beds state
+              onChange={(e) => setSelectedBeds(e.target.value)}
+              disabled={loading}
             >
               <option value="">Min. Bedrooms</option>
               <option value="1">1+</option>
@@ -153,8 +202,10 @@ function PropertiesPage() {
               <option value="5">5+</option>
               <option value="6">6+</option>
             </select>
-            {/* Button type is submit by default within a form */}
-            <button type="submit" className="cta-button filter-submit">Search</button>
+            {/* No need for a separate submit button effect if filtering on change */}
+            {/* <button type="submit" className="cta-button filter-submit" disabled={loading}>
+              {loading ? 'Searching...' : 'Search'}
+            </button> */}
           </form>
         </div>
       </section>
@@ -162,38 +213,58 @@ function PropertiesPage() {
       {/* --- Property List Section --- */}
       <section className="property-list-section section">
         <div className="container">
-          {/* Check if properties are loaded before rendering */}
-          {filteredProperties.length > 0 ? (
-            <div className="property-grid">
-              {/* Map over the filteredProperties state */}
-              {filteredProperties.map(property => (
-                // Use the PropertyCard component
-                <PropertyCard key={property.id} property={property} />
-              ))}
-            </div>
-          ) : (
-            // Show message if no properties match filters or if data hasn't loaded
-            // Could add a specific loading state later if needed
-            <p className="no-results-message">
-              {allProperties.length > 0 ? "No properties found matching your criteria." : "Loading properties..."}
-            </p>
-          )}
+          {/* Loading State */}
+          {loading && <p className="loading-message">Loading properties...</p>}
 
-          {/* --- Pagination Placeholder --- */}
-          {/* Implement actual pagination logic if needed */}
-          {filteredProperties.length > 0 && (
-            <div className="pagination">
-              <button className="pagination-button" disabled>« Prev</button>
-              <span>Page 1 of 1</span> {/* Needs logic */}
-              <button className="pagination-button" disabled>Next »</button>
-            </div>
+          {/* Error State */}
+          {error && !loading && <p className="error-message">{error}</p>}
+
+          {/* Display Properties or No Results Message */}
+          {!loading && !error && (
+            <>
+              {/* Map over the items for the CURRENT PAGE */}
+              {currentItems.length > 0 ? (
+                <div className="property-grid">
+                  {currentItems.map(property => (
+                    <PropertyCard key={property.id} property={property} />
+                  ))}
+                </div>
+              ) : (
+                // Check filteredProperties length to distinguish between no results for filter vs no data at all
+                 <p className="no-results-message">
+                   {allProperties.length > 0 ? "No properties found matching your criteria." : "No properties available at the moment."}
+                 </p>
+              )}
+
+              {/* --- Pagination Controls --- */}
+              {/* Only show pagination if there's more than one page */}
+              {totalPages > 1 && (
+                 <div className="pagination">
+                   <button
+                     className="pagination-button"
+                     onClick={handlePrevPage}
+                     disabled={currentPage === 1} // Disable if on the first page
+                   >
+                     « Prev
+                   </button>
+
+                   <span className="pagination-info">
+                     Page {currentPage} of {totalPages}
+                   </span>
+
+                   <button
+                     className="pagination-button"
+                     onClick={handleNextPage}
+                     disabled={currentPage === totalPages} // Disable if on the last page
+                    >
+                     Next »
+                   </button>
+                 </div>
+              )}
+            </>
           )}
         </div>
       </section>
-
-      {/* --- Footer --- */}
-      {/* Assuming Footer is handled by the Layout component */}
-      {/* <footer className="main-footer"> ... </footer> */}
     </div>
   );
 }
